@@ -1,0 +1,183 @@
+確認テスト　　　　　名前
+
+
+★SQL
+TestDB2.dbをつかってください
+テーブルplayerから
+(1)	身長の最も高い人を求めるSQLを書いてください
+(2)	身長の平均を求めるSQLを書いてください
+(3)	身長の最も低い人を求めるSQL
+(4)	球団名の一覧を表示してください（group by）
+(5)	
+テーブル 球団　
+フィールド
+球団D       テキスト型
+球団名      テキスト型
+を作ってください
+型はすべてテキスト型とします
+(6)	playerからフィールド球団を
+DeNAを１
+オリックスを２
+ソフトバンクを3
+ロッテを４
+中日を５
+巨人を６
+広島を７
+日本ハムを８
+楽天を９
+西武を１０
+阪神を11
+に更新してください
+
+
+(7)	球団ID球団名を入れてください
+DeNAを１
+オリックスを２
+ソフトバンクを3
+ロッテを４
+中日を５
+巨人を６
+広島を７
+日本ハムを８
+楽天を９
+西武を１０
+阪神を11
+として
+データを追加してください
+
+(8)	球団名、playerを内部結合で結んでください
+(9)	選手の球団人数を表示してください
+★Python からSQL
+(1)pysql1.py
+テーブルplayerからデータをすべてコマンドラインに表示してください
+以下テーブル
+
+
+import XXXXXX
+dbname=‘XXXXX' 
+conn=sqlite3.connect(XXXXXX) 
+c = conn.cursor() 
+select_sql = “XXXXXXXXX " 
+for row in c.execute(XXXXXXX): 
+print(XXXXXXX) 
+conn.close()
+(2)pysql2.py
+テーブルuserに任意のデータを挿入してください
+import XXXXXX 
+dbname= ‘XXXXXX ' 
+conn=sqlite3.connect(dbname) 
+c = conn.cursor() 
+sql = “insert into user(uid,pwd)  XXXXXX" 
+uid="uid" 
+pwd="pwd" 
+xxxx = (uid,pwd) 
+c.execute(sql, xxxx) 
+conn. xxxx conn.close
+★スクレイピング
+sc1.py
+urlからデータをダウンロードしてください。
+import urllib.request, urllib.error
+url = 'https://info.finance.yahoo.co.jp/history/?code=8411.T&sy=2020&sm=5&sd=25&ey=2020&em=6&ed=24&tm=d'
+print(url)
+request = urllib.request.Request(url)
+text1 = urllib.request.urlopen(request).read().decode('utf-8')
+print(text1)
+
+★スクレイピング2
+sc2.py
+以下のURLからリンクを抜き出してください
+from bs4 import BeautifulSoup
+import requests
+url = "https://www.yahoo.co.jp"
+r = requests.get(url)
+soup = BeautifulSoup(r.text)
+titles =soup.select("a")
+print(titles)
+for title in titles:
+print("Text=",title.text)
+link = title.get("href")
+print("LINK=",link)
+
+
+
+
+
+
+select 球団 from player
+group by 球団;
+create table 球団(ID,球団名);
+insert into 球団(ID,球団名) values('1','DeNA');
+insert into 球団(ID,球団名) values('2','オリックス');
+insert into 球団(ID,球団名) values('3','ソフトバンク');
+insert into 球団(ID,球団名) values('4','ロッテ');
+insert into 球団(ID,球団名) values('5','中日');
+insert into 球団(ID,球団名) values('6','巨人');
+insert into 球団(ID,球団名) values('7','広島');
+insert into 球団(ID,球団名) values('8','日本ハム');
+insert into 球団(ID,球団名) values('9','楽天');
+insert into 球団(ID,球団名) values('10','西武');
+insert into 球団(ID,球団名) values('11','阪神');
+
+select * from player inner join 球団 on player=球団.ID
+
+update 球団 set  球団='1'  where 球団='DeNA'
+update 球団 set  球団='2'  where 球団='オリックス'
+update 球団 set  球団='3'  where 球団='ソフトバン'
+update 球団 set  球団='4'  where 球団='ロッテ'
+update 球団 set  球団='5'  where 球団='中日'
+update 球団 set  球団='6'  where 球団='巨人'
+update 球団 set  球団='7'  where 球団='広島'
+update 球団 set  球団='8'  where 球団='日本ハム'
+update 球団 set  球団='9'  where 球団='楽天'
+update 球団 set  球団='10' where 球団='西武'
+update 球団 set  球団='11' where 球団='阪神'
+
+
+
+select 球団,count(*) from player group by 球団
+
+
+
+
+
+
+
+
+
+
+
+DeNA
+オリックス
+ソフトバンク
+ロッテ
+中日
+巨人
+広島
+日本ハム
+楽天
+西武
+阪神
+
+
+
+import urllib.request, urllib.error
+url = 'https://info.finance.yahoo.co.jp/history/?code=8411.T&sy=2020&sm=5&sd=25&ey=2020&em=6&ed=24&tm=d'
+print(url)
+request = urllib.request.Request(url)
+text1 = urllib.request.urlopen(request).read().decode('utf-8')
+print(text1)
+
+
+from bs4 import BeautifulSoup
+import requests
+url = "https://www.yahoo.co.jp"
+r = requests.get(url)
+soup = BeautifulSoup(r.text)
+titles =soup.select("a")
+print(titles)
+for title in titles:
+print("Text=",title.text)
+link = title.get("href")
+print("LINK=",link)
+
+
